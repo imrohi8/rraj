@@ -1,0 +1,120 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven3' // The name matches the one you have configured in Jenkins
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/jabedhasan21/java-hello-world-with-maven.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'mvn clean install'  // Running Maven commands using the installed Maven3 tool
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deployment steps go here.'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Build succeeded!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
+
+
+
+//////6666666666666666666666666666666
+sonar.projectKey=ia2  ////sonarqube wale project ka naam prog6 hai mera 8081 pe chalta hai
+sonar.projectName=ia2
+sonar.projectVersion=1.0
+sonar.language=python
+
+https://github.com/imrohi8/pg33.git
+
+SonarQubeScanner-4.6.2
+
+netstat -ano | findstr :8080
+taskkill /PID <PID> /F
+java -jar jenkins.war --httpPort=8081
+
+
+/////5555555555555
+dir
+docker build -t my-nginx-server .
+docker run -d -p 8082:80 my-nginx-server
+
+
+/////444444
+docker pull nginx
+docker run -d -p 8080:80 nginx
+images ,,docker rmi -f nginx,,,,pull busybox,,run busybox,,,echo
+
+
+///
+def add(a,b):
+  return a+b
+
+def test_add():
+   assert add(1,2)==3
+   assert add(2,2)==4
+
+
+
+
+
+
+
+FROM nginx:alpine
+COPY html /usr/share/nginx/html
+EXPOSE 82
+
+
+
+
+
+
+name: First GitHub Actions
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setting up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Installing dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Running tests
+        run: |
+          python -m pytest addition.py
